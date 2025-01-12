@@ -457,7 +457,7 @@
 
 63.Count the number of sales made in each month. 
 
-            SELECT DATE_FORMAT(s.sale_date, '%Y-%m') AS month, COUNT(*) AS sales_count 
+            SELECT FORMAT(s.sale_date, '%Y-%m') AS month, COUNT(*) AS sales_count 
             FROM Sales s 
             GROUP BY month; 
 
