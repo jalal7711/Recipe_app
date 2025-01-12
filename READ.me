@@ -1,1533 +1,677 @@
-
-
 1.How to select all columns from a table (table name is users)? 
 
-    SELECT * FROM users; 
+            SELECT * FROM users; 
 
 2.What is the DISTINCT statement and how do you use it? 
 
  This statement is used with the SELECT statement to filter out duplicates and return only unique values from a column of a table. The syntax is: 
  
-      SELECT DISTINCT col_1 
-      FROM table_name; 
+            SELECT DISTINCT col_1 
+            FROM table_name; 
 
  
+3.Create a table (person) in SQL with id, name,phno,email and address . 
 
+            Create Table person (             
+            Id INT IDENTITY (0,1) PRIMARY KEY,             
+            Name VARCHAR(255) not null, 
+            Phone VARCHAR (255) not null, 
+            Email nvarchar (255) not null, 
+            Adress TEXT              
+            ); 
  
+4.Write a SQL query to fetch "FIRST_NAME" from the Student table in upper case and use ALIAS name as STUDENT_NAME. 
 
- 
-
- 
-
-Create a table (person) in SQL with id, name,phno,email and address . 
-
- 
-
-Create Table person ( 
-
-Id INT IDENTITY (0,1) PRIMARY KEY, 
-
-Name VARCHAR(255) not null, 
-
-Phone VARCHAR (255) not null, 
-
-Email nvarchar (255) not null, 
-
-Adress TEXT  
-
-); 
-
- 
-
- 
-
- 
-
-Write a SQL query to fetch "FIRST_NAME" from the Student table in upper case and use ALIAS name as STUDENT_NAME. 
-
- 
-
-SELECT upper(FIRST_NAME) as STUDENT_NAME  
-
-from Student; 
-
- 
-
- 
-
-Write a SQL query to print the first 3 characters of FIRST_NAME from Student table. 
-
- 
-
-SELECT SUBSTRING(FIRST_NAME, 1, 3)  
-
- FROM Student; 
-
- 
-
- 
-
- 
-
- 
-
-Write a SQL query to find the position of alphabet ('a') int the first name column 'Shivansh' from Student table. 
-
- 
-
-SELECT CHARINDEX('a', FIRST_NAME) AS Position 
-
-FROM Student 
-
-WHERE FIRST_NAME = 'Shivansh'; 
-
- 
-
- 
-
- 
-
-Write a SQL query to fetch unique values of MAJOR Subjects from Student table. 
-
- 
-
-SELECT DISTINCT MAJOR  
-
-from STUDENT;  
-
- 
-Or 
-
- 
-SELECT MAJOR  
-
-FROM STUDENT  
-
-GROUP BY(MAJOR); 
-
- 
-
- 
-
-Write a SQL query that fetches the unique values of MAJOR Subjects from Student table and print its length. 
-
-                                                                                                                                                                                                          SELECT DISTINCT MAJOR, LENGTH(MAJOR)  
-
-FROM Student;   
-
- 
-
- 
-
- 
-
-Write a SQL query to print FIRST_NAME from the Student table after replacing 'a' with 'A'. 
-
- 
-
-SELECT REPLACE (FIRST_NAME, 'a', 'A')  
-
-FROM Student; 
-
- 
-
- 
-
- 
-
-Write a SQL query to print the FIRST_NAME and LAST_NAME from Student table into single column COMPLETE_NAME. 
-
- 
-
-SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS COMPLETE_NAME  
-
-FROM Student; 
-
- 
-
- 
-
- 
-
- 
-
-Write a SQL query to print all Student details from Student table order by FIRST_NAME Ascending and MAJOR Subject descending . 
-
- 
-
-SELECT *  
-
-FROM Student  
-
-ORDER BY FIRST_NAME , MAJOR DESC; 
-
- 
-
- 
-
- 
-
- 
-
-Write a SQL query to print details of the Students with the FIRST_NAME as 'Prem' and 'Shivansh' from Student table. 
-
- 
-
-SELECT *  
-
-from Student  
-
-WHERE FIRST_NAME IN ('Prem' , 'Shivansh'); 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-Write a SQL query to print details of the Students excluding FIRST_NAME as 'Prem' and 'Shivansh' from Student table. 
-
- 
-
-SELECT *  
-
-from Student  
-
-WHERE FIRST_NAME NOT IN ('Prem', 'Shivansh'); 
-
- 
-
- 
-
- 
-
-Write a SQL query to print details of the Students whose FIRST_NAME ends with 'a'. 
-
- 
-
-SELECT *  
-
-FROM Student  
-
-WHERE FIRST_NAME  
-
-LIKE '%a'; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to print details of the Students whose FIRST_NAME ends with ‘a’ and contains six alphabets. 
-
- 
-
-SELECT * 
-
-FROM Students 
-
-WHERE FIRST_NAME LIKE '%a'  
-
-  AND LEN(FIRST_NAME) = 6; 
-
- 
-
- 
-
- 
-
-Write an SQL query to print details of the Students whose GPA lies between 9.00 and 9.99. 
-
- 
-
-SELECT *  
-
-FROM Student  
-
-WHERE GPA  
-
-BETWEEN 9.00 AND 9.99; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch the count of Students having Major Subject ‘Computer Science’. 
-
- 
-
-SELECT Major,  
-
-COUNT(*) as TOTAL_COUNT  
-
-FROM Student  
-
-WHERE MAJOR = 'Computer Science'; 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch Students full names with GPA >= 8.5 and <= 9.5. 
-
- 
-
-SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME)  
-
-AS FULL_NAME  
-
-FROM Student  
-
-WHERE GPA >= 8.5 and Gpa<= 9.5; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch the no. of Students for each MAJOR subject in the descending order. 
-
- 
-
-SELECT MAJOR, COUNT(MAJOR)  
-
-from Student  
-
-group by MAJOR  
-
-order by COUNT(MAJOR) DESC; 
-
- 
-
- 
-
- 
-
- 
-
-Display the details of students who have received scholarships, including their names, scholarship amounts, and scholarship dates. 
-
- 
-
-SELECT  
-   Student.FIRST_NAME, 
-    Student.LAST_NAME, 
-    Scholarship.SCHOLARSHIP_AMOUNT, 
-    Scholarship.SCHOLARSHIP_DATE 
-FROM  
-   Student 
-INNER JOIN  
-   Scholarship ON Student.STUDENT_ID = Scholarship.STUDENT_REF_ID; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to show only odd rows from Student table. 
-
- 
-
-SELECT * FROM Student  
-
-WHERE student_id % 2 != 0; 
-
- 
-
- 
-
- 
-
-Write an SQL query to show only even rows from Student table. 
-
- 
-
-SELECT * FROM Student  
-
-WHERE student_id % 2 = 0; 
-
- 
-
- 
-
- 
-
- 
-
-List all students and their scholarship amounts if they have received any. If a student has not received a scholarship, display NULL for the scholarship details. 
-
- 
-
-SELECT  
-   Student.FIRST_NAME, 
-    Student.LAST_NAME, 
-    Scholarship.SCHOLARSHIP_AMOUNT, 
-    Scholarship.SCHOLARSHIP_DATE 
-FROM  
-   Student 
-LEFT JOIN  
-   Scholarship ON Student.STUDENT_ID = Scholarship.STUDENT_REF_ID; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to show the top n (say 5) records of Student table order by descending GPA. 
-
- 
-
-SELECT TOP 5 * 
-
-FROM Student 
-
-ORDER BY GPA DESC; 
-
- 
- 
-
- 
-
- 
-
-Write an SQL query to determine the nth (say n=5) highest GPA from a table. 
-
- 
-
-WITH RankedStudents AS ( 
-
-    SELECT GPA, 
-
-           ROW_NUMBER() OVER (ORDER BY GPA DESC) AS Rank 
-
-    FROM Student 
-
-) 
-
-SELECT GPA 
-
-FROM RankedStudents 
-
-WHERE Rank = 5; 
-
- 
-
- 
-
-Write an SQL query to determine the 5th highest GPA without using LIMIT keyword. 
-
- 
-
-SELECT *  
-
-FROM Student s1  
-
-WHERE 4 = ( SELECT COUNT(DISTINCT s2.GPA)  
-
-FROM Student s2  
-
-WHERE s2.GPA > s1.GPA  
-
-); 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch the list of Students with the same GPA. 
-
- 
-
-SELECT StudentID, Name, GPA 
-
- FROM Student  
-
-WHERE GPA IN (  
-
-SELECT GPA  
-
-FROM Student  
-
-GROUP BY GPA  
-
-HAVING COUNT(*) > 1  
-
-)  
-
-ORDER BY GPA; 
-
- 
-
- 
-
- 
-
-Write an SQL query to show the second highest GPA from a Student table using sub-query. 
-
-SELECT MAX(GPA)  
-
-FROM Student 
-WHERE GPA NOT IN( 
-
-SELECT MAX(GPA)  
-
-FROM Student 
-
-); 
-
- 
-
- 
-
-Write an SQL query to list STUDENT_ID who does not get Scholarship. 
-
- 
-
-SELECT STUDENT_ID  
-
-FROM Student  
-WHERE STUDENT_ID NOT IN ( 
-
-SELECT STUDENT_REF_ID  
-
-FROM Scholarship 
-
-); 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch the first 50% records from a table. 
-
- 
-
-SELECT TOP 50 PERCENT * 
-
-FROM YourTableName 
-
-ORDER BY SomeColumn; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch the MAJOR subject that have less than 4 people in it. 
-
- 
-
-SELECT MAJOR, COUNT(*) AS StudentCount 
-
-FROM Student  
-
-GROUP BY MAJOR  
-
-HAVING COUNT(*) < 4; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to show all MAJOR subject along with the number of people in there. 
-
- 
-
-SELECT MAJOR, COUNT(*) AS StudentCount  
-
-FROM Student 
-
-GROUP BY MAJOR; 
-
- 
-
- 
-
- 
-
-Write an SQL query to show the last record from a table. 
-
- 
-
-SELECT *  
-
-FROM Student  
-
-WHERE STUDENT_ID = ( 
-
-SELECT MAX(STUDENT_ID)  
-
-FROM STUDENT 
-
-); 
-
- 
-
- 
-
-Write an SQL query to fetch the first row of a table. 
-
-SELECT * FROM Student  
-
-WHERE STUDENT_ID = (SELECT MIN(STUDENT_ID)  
-
-FROM Student); 
-
- 
-
- 
-
-Write an SQL query to fetch the last five records from a table. 
-
-SELECT *  
-FROM ( 
-    SELECT TOP 5*  
-   FROM Student  
-   ORDER BY STUDENT_ID DESC  
-) AS LastFiveRecords  
-ORDER BY STUDENT_ID; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch three max GPA from a table using co-related subquery. 
-
- 
-
-SELECT Distinct GPA 
-
-FROM Student S1 
-
-WHERE 3 > ( 
-
-    SELECT COUNT(*) 
-
-    FROM Student S2 
-
-    WHERE S2.GPA > S1.GPA 
-
-) 
-
-ORDER BY GPA DESC; 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch three min GPA from a table using co-related subquery. 
-
- 
-
-SELECT DISTINCT GPA  
-
-FROM Student S1  
-WHERE 3 > ( 
-
-SELECT COUNT(*) 
-
-FROM Student S2  
-
-WHERE S1.GPA >S2.GPA 
-
-)  
-
-ORDER BY S1.GPA; 
-
- 
-
- 
-
- 
-
-Write an SQL query to fetch nth max GPA from a table. 
-
- 
-
-SELECT DISTINCT GPA  
-
-FROM Student S1  
-WHERE n = ( 
-
-SELECT COUNT(DISTINCT GPA)  
-
-FROM Student S2  
+            SELECT upper(FIRST_NAME) as STUDENT_NAME  
+            from Student; 
 
-WHERE S1.GPA <= S2.GPA)  
 
-ORDER BY S1.GPA DESC; 
+5.Write a SQL query to print the first 3 characters of FIRST_NAME from Student table. 
 
- 
-
- 
-
- 
-
-Write an SQL query to fetch MAJOR subjects along with the max GPA in each of these MAJOR subjects. 
-
- 
-
-SELECT MAJOR, MAX(GPA) as MAXGPA  
-
-FROM Student  
-
-GROUP BY MAJOR; 
-
- 
-
- 
-
-Write an SQL query to fetch the names of Students who has highest GPA. 
-
- 
-
-SELECT FIRST_NAME, GPA  
-
-FROM Student  
-
-WHERE GPA = (SELECT MAX(GPA) FROM Student); 
-
- 
-
- 
-
-Write an SQL query to show the current date and time. 
-
-Query to get current date and time :  
-SELECT NOW(); 
-
- 
-
- 
-
- 
-
-Write a query to create a new table which consists of data and structure copied from the other table (say Student) or clone the table named Student. 
-
- 
-
-CREATE TABLE CloneTable AS SELECT * FROM Student; 
-
- 
-
- 
-
-Write an SQL query to update the GPA of all the students in 'Computer Science' MAJOR subject to 7.5. 
-
- 
-
-UPDATE Student  
-
-SET GPA = 7.5  
-
-WHERE MAJOR = 'Computer Science'; 
-
- 
-
- 
-
-Write an SQL query to find the average GPA for each major. 
-
- 
-
-SELECT MAJOR, AVG(GPA) AS AVERAGE_GPA  
-
-FROM Student  
-
-GROUP BY MAJOR; 
-
- 
-
- 
-
-Write an SQL query to show the top 3 students with the highest GPA. 
-
- 
-
-SELECT * FROM Student  
-
-ORDER BY GPA  
-
-DESC LIMIT 3; 
-
- 
-
- 
-
-Write an SQL query to find the number of students in each major who have a GPA greater than 7.5. 
-
- 
-
-SELECT MAJOR, COUNT(STUDENT_ID) 
-
-AS HIGH_GPA_COUNT  
-
-FROM Student  
-
-WHERE GPA > 3.5  
-
-GROUP BY MAJOR; 
-
- 
-
- 
-
-Write an SQL query to find the students who have the same GPA as 'Shivansh Mahajan'. 
-
- 
-
-SELECT * FROM Student  
-
-WHERE GPA = (SELECT GPA  
-
-FROM Student  
-
-WHERE FIRST_NAME = 'Shivansh'  
-AND LAST_NAME = 'Mahajan'); 
-
- 
-
- 
-
-Write an SQL query that returns the project number and name for projects with a budget greater than $100,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT pno, pname 
-
-FROM proj 
-
-WHERE budget > 100000; 
-
- 
-
- 
-
-Write an SQL query that returns all works on records where hours worked is less than 10 and the responsibility is 'Manager'. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT * 
-
-FROM workson 
-
-WHERE hours < 10 AND resp = 'Manager'; 
-
- 
-
- 
-
-Write an SQL query that returns the employees (number and name only) who have a title of 'EE' or 'SA' and make more than $35,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT eno, ename 
-
-FROM emp 
-
-WHERE (title = 'EE' OR title = 'SA') AND salary > 35000; 
-
- 
-
- 
-
- 
-
-Write an SQL query that returns the employees (name only) in department 'D1' ordered by decreasing salary. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT ename 
-
-FROM emp 
-
-WHERE dno = (SELECT dno FROM dept WHERE dname = 'HR') 
-
-ORDER BY salary DESC; 
-
- 
-
- 
-
- 
-
-Write an SQL query that returns the departments (all fields) ordered by ascending department name. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT * 
-
-FROM dept 
-
-ORDER BY dname ASC; 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query that returns the employee name, department name, and employee title. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
- 
-
-SELECT emp.ename, dept.dname, emp.title 
-
-FROM emp 
-
-JOIN dept ON emp.dno = dept.dno; 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-Write an SQL query that returns the project name, hours worked, and project number for all works on records where hours > 10. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT proj.pname, workson.hours, workson.pno 
-
-FROM workson 
-
-JOIN proj ON workson.pno = proj.pno 
-
-WHERE workson.hours > 10; 
-
- 
-
- 
-
-Write an SQL query that returns the project name, department name, and budget for all projects with a budget < $50,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
-
- 
-
-SELECT proj.pname, dept.dname, proj.budget 
-
-FROM proj 
-
-JOIN dept ON proj.dno = dept.dno 
-
-WHERE proj.budget < 50000; 
-
- 
+            SELECT SUBSTRING(FIRST_NAME, 1, 3)  
+            FROM Student; 
 
- 
 
-Write an SQL query that returns the employee numbers and salaries of all employees in the 'Consulting' department ordered by descending salary. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
+6.Write a SQL query to find the position of alphabet ('a') int the first name column 'Shivansh' from Student table. 
 
- 
+            SELECT CHARINDEX('a', FIRST_NAME) AS Position 
+            FROM Student 
+            WHERE FIRST_NAME = 'Shivansh'; 
 
-SELECT emp.eno, emp.salary 
+7.Write a SQL query to fetch unique values of MAJOR Subjects from Student table. 
 
-FROM emp 
+            SELECT DISTINCT MAJOR  
+            from STUDENT;
 
-JOIN dept ON emp.dno = dept.dno 
+            Or
 
-WHERE dept.dname = 'Consulting' 
+            SELECT MAJOR  
+            FROM STUDENT  
+            GROUP BY(MAJOR); 
 
-ORDER BY emp.salary DESC; 
+8.Write a SQL query that fetches the unique values of MAJOR Subjects from Student table and print its length. 
 
- 
+            SELECT DISTINCT MAJOR, LENGTH(MAJOR) 
+            FROM Student;   
 
- 
+9.Write a SQL query to print FIRST_NAME from the Student table after replacing 'a' with 'A'. 
 
- 
+            SELECT REPLACE (FIRST_NAME, 'a', 'A')          
+            FROM Student; 
 
- 
+10.Write a SQL query to print the FIRST_NAME and LAST_NAME from Student table into single column COMPLETE_NAME. 
 
-Write an SQL query that returns the employee name, project name, employee title, and hours for all works on records. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
+            SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS COMPLETE_NAME  
+            FROM Student; 
 
- 
+11.Write a SQL query to print all Student details from Student table order by FIRST_NAME Ascending and MAJOR Subject descending . 
 
-SELECT emp.ename, proj.pname, emp.title, workson.hours 
 
-FROM workson 
+            SELECT *  
+            FROM Student              
+            ORDER BY FIRST_NAME , MAJOR DESC; 
 
-JOIN emp ON workson.eno = emp.eno 
+12.Write a SQL query to print details of the Students with the FIRST_NAME as 'Prem' and 'Shivansh' from Student table. 
 
-JOIN proj ON workson.pno = proj.pno; 
+            SELECT *  
+            from Student  
+            WHERE FIRST_NAME IN ('Prem' , 'Shivansh'); 
 
- 
+13.Write a SQL query to print details of the Students excluding FIRST_NAME as 'Prem' and 'Shivansh' from Student table. 
 
- 
+            SELECT *  
+            from Student  
+            WHERE FIRST_NAME NOT IN ('Prem', 'Shivansh'); 
 
- 
+14.Write a SQL query to print details of the Students whose FIRST_NAME ends with 'a'. 
 
-Write the SQL query which Find the name and price of the cheapest item(s). 
+            SELECT *             
+            FROM Student              
+            WHERE FIRST_NAME              
+            LIKE '%a'; 
 
- 
+15.Write an SQL query to print details of the Students whose FIRST_NAME ends with ‘a’ and contains six alphabets. 
 
-SELECT Name,Price 
+            SELECT * 
+            FROM Students 
+            WHERE FIRST_NAME LIKE '%a'  
+            AND LEN(FIRST_NAME) = 6; 
 
-FROM Items 
 
-WHERE price =(SELECT MIN(Price) FROM Items); 
+16.Write an SQL query to print details of the Students whose GPA lies between 9.00 and 9.99. 
 
- 
+            SELECT *              
+            FROM Student              
+            WHERE GPA              
+            BETWEEN 9.00 AND 9.99; 
 
- 
+17.Write an SQL query to fetch the count of Students having Major Subject ‘Computer Science’. 
 
- 
+            SELECT Major,  
+            COUNT(*) as TOTAL_COUNT  
+            FROM Student  
+            WHERE MAJOR = 'Computer Science'; 
+
+18.Write an SQL query to fetch Students full names with GPA >= 8.5 and <= 9.5. 
+
+            SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME)  
+            AS FULL_NAME  
+            FROM Student  
+            WHERE GPA >= 8.5 and Gpa<= 9.5; 
+
+19.Write an SQL query to fetch the no. of Students for each MAJOR subject in the descending order. 
+
+            SELECT MAJOR, COUNT(MAJOR)  
+            from Student  
+            group by MAJOR  
+            order by COUNT(MAJOR) DESC;
+
+20.Display the details of students who have received scholarships, including their names, scholarship amounts, and scholarship dates. 
+
+            SELECT  
+               Student.FIRST_NAME, 
+                Student.LAST_NAME, 
+                Scholarship.SCHOLARSHIP_AMOUNT, 
+                Scholarship.SCHOLARSHIP_DATE 
+            FROM  
+               Student 
+            INNER JOIN  
+               Scholarship ON Student.STUDENT_ID = Scholarship.STUDENT_REF_ID; 
 
-Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'. 
+21.Write an SQL query to show only odd rows from Student table. 
+
+            SELECT * FROM Student  
+            WHERE student_id % 2 != 0; 
+
+22.Write an SQL query to show only even rows from Student table. 
+
+            SELECT * FROM Student              
+            WHERE student_id % 2 = 0; 
+
+23.List all students and their scholarship amounts if they have received any. If a student has not received a scholarship, display NULL for the scholarship details. 
+
+            SELECT  
+               Student.FIRST_NAME, 
+                Student.LAST_NAME, 
+                Scholarship.SCHOLARSHIP_AMOUNT, 
+                Scholarship.SCHOLARSHIP_DATE 
+            FROM  
+               Student 
+            LEFT JOIN  
+               Scholarship ON Student.STUDENT_ID = Scholarship.STUDENT_REF_ID; 
+
+24.Write an SQL query to show the top n (say 5) records of Student table order by descending GPA. 
 
- 
+            SELECT TOP 5 *             
+            FROM Student             
+            ORDER BY GPA DESC; 
 
-SELECT sale_id, DATE_FORMAT(sale_date, '%Y-%m-%d') AS 
+25.Write an SQL query to determine the nth (say n=5) highest GPA from a table. 
+
+            WITH RankedStudents AS (            
+                SELECT GPA,             
+                       ROW_NUMBER() OVER (ORDER BY GPA DESC) AS Rank             
+                FROM Student             
+            )             
+            SELECT GPA             
+            FROM RankedStudents             
+            WHERE Rank = 5; 
+
+26.Write an SQL query to determine the 5th highest GPA without using LIMIT keyword. 
+
+            SELECT *  
+            FROM Student s1  
+            WHERE 4 = ( SELECT COUNT(DISTINCT s2.GPA)  
+            FROM Student s2  
+            WHERE s2.GPA > s1.GPA  
+            ); 
+
+27.Write an SQL query to fetch the list of Students with the same GPA. 
+
+            SELECT StudentID, Name, GPA 
+             FROM Student  
+            WHERE GPA IN (  
+            SELECT GPA  
+            FROM Student  
+            GROUP BY GPA  
+            HAVING COUNT(*) > 1  
+            )  
+            ORDER BY GPA; 
+
+28.Write an SQL query to show the second highest GPA from a Student table using sub-query. 
+
+            SELECT MAX(GPA)  
+            FROM Student 
+            WHERE GPA NOT IN( 
+            SELECT MAX(GPA)  
+            FROM Student 
+            ); 
+
+29.Write an SQL query to list STUDENT_ID who does not get Scholarship. 
+
+            SELECT STUDENT_ID  
+            FROM Student  
+            WHERE STUDENT_ID NOT IN ( 
+            SELECT STUDENT_REF_ID  
+            FROM Scholarship             
+            ); 
+
+30.Write an SQL query to fetch the first 50% records from a table. 
+
+            SELECT TOP 50 PERCENT * 
+            FROM YourTableName 
+            ORDER BY SomeColumn; 
+
+31.Write an SQL query to fetch the MAJOR subject that have less than 4 people in it. 
+
+            SELECT MAJOR, COUNT(*) AS StudentCount 
+            FROM Student  
+            GROUP BY MAJOR  
+            HAVING COUNT(*) < 4; 
+
+32.Write an SQL query to show all MAJOR subject along with the number of people in there. 
+
+            SELECT MAJOR, COUNT(*) AS StudentCount  
+            FROM Student 
+            GROUP BY MAJOR; 
 
-formatted_date  
-FROM Sales; 
+33.Write an SQL query to show the last record from a table. 
+
+            SELECT *  
+            FROM Student  
+            WHERE STUDENT_ID = ( 
+            SELECT MAX(STUDENT_ID)  
+            FROM STUDENT 
+            ); 
+
+34.Write an SQL query to fetch the first row of a table. 
+
+            SELECT * FROM Student  
+            WHERE STUDENT_ID = (SELECT MIN(STUDENT_ID)  
+            FROM Student); 
 
- 
 
- 
+35.Write an SQL query to fetch the last five records from a table. 
+
+            SELECT *  
+            FROM ( 
+                SELECT TOP 5*  
+               FROM Student  
+               ORDER BY STUDENT_ID DESC  
+            ) AS LastFiveRecords  
+            ORDER BY STUDENT_ID; 
 
- 
+36.Write an SQL query to fetch three max GPA from a table using co-related subquery. 
 
-Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600.  
+            SELECT Distinct GPA 
+            FROM Student S1 
+            WHERE 3 > ( 
+                SELECT COUNT(*) 
+                FROM Student S2 
+                WHERE S2.GPA > S1.GPA 
+            ) 
+            ORDER BY GPA DESC; 
 
- 
+37.Write an SQL query to fetch three min GPA from a table using co-related subquery. 
 
-SELECT product_name, unit_price  
-FROM Products  
-WHERE unit_price BETWEEN 20 AND 600; 
+            SELECT DISTINCT GPA  
+            FROM Student S1  
+            WHERE 3 > ( 
+            SELECT COUNT(*) 
+            FROM Student S2  
+            WHERE S1.GPA >S2.GPA 
+            )  
+            ORDER BY S1.GPA; 
 
- 
+38.Write an SQL query to fetch nth max GPA from a table. 
 
- 
+            SELECT DISTINCT GPA  
+            FROM Student S1  
+            WHERE n = ( 
+            SELECT COUNT(DISTINCT GPA)  
+            FROM Student S2  
+            WHERE S1.GPA <= S2.GPA)  
+            ORDER BY S1.GPA DESC; 
 
- 
+39.Write an SQL query to fetch MAJOR subjects along with the max GPA in each of these MAJOR subjects. 
 
-Calculate the total revenue generated from sales for each product category.  
+            SELECT MAJOR, MAX(GPA) as MAXGPA  
+            FROM Student  
+            GROUP BY MAJOR; 
 
- 
+40.Write an SQL query to fetch the names of Students who has highest GPA. 
 
-SELECT p.category, SUM(s.total_price) AS total_revenue 
-FROM Sales s 
-JOIN Products p ON s.product_id = p.product_id 
-GROUP BY p.category; 
+            SELECT FIRST_NAME, GPA  
+            FROM Student  
+            WHERE GPA = (SELECT MAX(GPA) FROM Student); 
 
- 
+41.Write an SQL query to show the current date and time. 
+            Query to get current date and time :  
+            SELECT NOW(); 
 
- 
+42.Write a query to create a new table which consists of data and structure copied from the other table (say Student) or clone the table named Student. 
 
- 
+            1.CREATE TABLE CloneTable AS SELECT * FROM Studen
+            2.CREATE TABLE NewTable AS
+                SELECT *
+                FROM Student
+                WHERE 1 = 0;
+            3.SELECT *
+                INTO NewTable
+                FROM Student;
 
- 
+43.Write an SQL query to update the GPA of all the students in 'Computer Science' MAJOR subject to 7.5. 
 
-Identify products with total sales exceeding 30. 
+            UPDATE Student  
+            SET GPA = 7.5  
+            WHERE MAJOR = 'Computer Science'; 
 
- 
+44.Write an SQL query to find the average GPA for each major. 
 
-SELECT p.product_name 
-FROM Sales s 
-JOIN Products p ON s.product_id = p.product_id 
-GROUP BY p.product_name 
-HAVING SUM(s.total_price) > 30; 
+            SELECT MAJOR, AVG(GPA) AS AVERAGE_GPA  
+            FROM Student  
+            GROUP BY MAJOR; 
 
- 
+45.Write an SQL query to show the top 3 students with the highest GPA. 
 
- 
+            SELECT * FROM Student  
+            ORDER BY GPA  
+            DESC LIMIT 3; 
 
-Count the number of sales made in each month. 
+46.Write an SQL query to find the number of students in each major who have a GPA greater than 7.5. 
 
- 
+            SELECT MAJOR, COUNT(STUDENT_ID) 
+            AS HIGH_GPA_COUNT  
+            FROM Student  
+            WHERE GPA > 7.5  
+            GROUP BY MAJOR; 
 
-SELECT DATE_FORMAT(s.sale_date, '%Y-%m') AS month, COUNT(*) AS sales_count 
-FROM Sales s 
-GROUP BY month; 
+47.Write an SQL query to find the students who have the same GPA as 'Shivansh Mahajan'. 
 
- 
+            SELECT * FROM Student  
+            WHERE GPA = (SELECT GPA  
+            FROM Student  
+            WHERE FIRST_NAME = 'Shivansh'  
+            AND LAST_NAME = 'Mahajan'); 
 
- 
+48.Write an SQL query that returns the project number and name for projects with a budget greater than $100,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT pno, pname             
+            FROM proj             
+            WHERE budget > 100000; 
 
-Determine the average quantity sold for products with a unit price greater than $100. 
+49.Write an SQL query that returns all works on records where hours worked is less than 10 and the responsibility is 'Manager'. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT * 
+            FROM workson 
+            WHERE hours < 10 AND resp = 'Manager'; 
 
-SELECT AVG(s.quantity_sold) AS average_quantity_sold 
-FROM Sales s 
-JOIN Products p ON s.product_id = p.product_id 
-WHERE p.unit_price > 100; 
+50.Write an SQL query that returns the employees (number and name only) who have a title of 'EE' or 'SA' and make more than $35,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT eno, ename 
+            FROM emp 
+            WHERE (title = 'EE' OR title = 'SA') AND salary > 35000; 
 
- 
+51.Write an SQL query that returns the employees (name only) in department 'D1' ordered by decreasing salary. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT ename 
+            FROM emp 
+            WHERE dno = (SELECT dno FROM dept WHERE dname = 'HR') 
+            ORDER BY salary DESC; 
 
-Retrieve the product name and total sales revenue for each product. 
+52.Write an SQL query that returns the departments (all fields) ordered by ascending department name. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT * 
+            FROM dept 
+            ORDER BY dname ASC; 
 
-SELECT p.product_name, SUM(s.total_price) AS total_revenue 
-FROM Sales s 
-JOIN Products p ON s.product_id = p.product_id 
-GROUP BY p.product_name; 
 
- 
+53.Write an SQL query that returns the employee name, department name, and employee title. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT emp.ename, dept.dname, emp.title 
+            FROM emp 
+            JOIN dept ON emp.dno = dept.dno; 
 
- 
+54.Write an SQL query that returns the project name, hours worked, and project number for all works on records where hours > 10. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
-List all sales along with the corresponding product names. 
+            SELECT proj.pname, workson.hours, workson.pno 
+            FROM workson 
+            JOIN proj ON workson.pno = proj.pno 
+            WHERE workson.hours > 10; 
 
- 
+55.Write an SQL query that returns the project name, department name, and budget for all projects with a budget < $50,000. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
-SELECT s.sale_id, p.product_name 
-FROM Sales s 
-JOIN Products p ON s.product_id = p.product_id; 
+            SELECT proj.pname, dept.dname, proj.budget 
+            FROM proj 
+            JOIN dept ON proj.dno = dept.dno 
+            WHERE proj.budget < 50000; 
 
- 
+56.Write an SQL query that returns the employee numbers and salaries of all employees in the 'Consulting' department ordered by descending salary. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT emp.eno, emp.salary 
+            FROM emp 
+            JOIN dept ON emp.dno = dept.dno 
+            WHERE dept.dname = 'Consulting' 
+            ORDER BY emp.salary DESC; 
 
- 
+57.Write an SQL query that returns the employee name, project name, employee title, and hours for all works on records. (employee (eno, ename, bdate, title, salary, dno) && projects (pno, pname, budget, dno) && departments  (dno, dname, mgreno) && workson (eno, pno, resp, hours)) 
 
- 
+            SELECT emp.ename, proj.pname, emp.title, workson.hours 
+            FROM workson 
+            JOIN emp ON workson.eno = emp.eno 
+            JOIN proj ON workson.pno = proj.pno; 
+                   
+58.Write the SQL query which Find the name and price of the cheapest item(s). 
 
-Categorize sales as "High", "Medium", or "Low" based on total price (e.g., > $200 is High, $100-$200 is Medium, < $100 is Low). 
+            SELECT Name,Price 
+            FROM Items 
+            WHERE price =(SELECT MIN(Price) FROM Items); 
 
- 
+59.Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'. 
 
-SELECT sale_id,  
-      CASE  
-          WHEN total_price > 200 THEN 'High' 
-           WHEN total_price BETWEEN 100 AND 200 THEN 'Medium' 
-           ELSE 'Low' 
-       END AS sales_category 
-FROM Sales; 
+            SELECT sale_id, DATE_FORMAT(sale_date, '%Y-%m-%d') AS 
+            formatted_date  
+            FROM Sales; 
 
- 
+60.Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600.  
 
- 
+            SELECT product_name, unit_price  
+            FROM Products  
+            WHERE unit_price BETWEEN 20 AND 600; 
 
- 
+61.Calculate the total revenue generated from sales for each product category.  
 
-Identify sales where the quantity sold is greater than the average quantity sold.  
+            SELECT p.category, SUM(s.total_price) AS total_revenue 
+            FROM Sales s 
+            JOIN Products p ON s.product_id = p.product_id 
+            GROUP BY p.category; 
 
- 
+62.Identify products with total sales exceeding 30. 
 
-SELECT * 
-FROM Sales 
-WHERE quantity_sold > (SELECT AVG(quantity_sold) FROM Sales); 
+            SELECT p.product_name 
+            FROM Sales s 
+            JOIN Products p ON s.product_id = p.product_id 
+            GROUP BY p.product_name 
+            HAVING SUM(s.total_price) > 30; 
 
- 
+63.Count the number of sales made in each month. 
 
- 
+            SELECT DATE_FORMAT(s.sale_date, '%Y-%m') AS month, COUNT(*) AS sales_count 
+            FROM Sales s 
+            GROUP BY month; 
 
-Extract the month and year from the sale date and count the number of sales for each month. 
+64.Determine the average quantity sold for products with a unit price greater than $100. 
 
- 
+            SELECT AVG(s.quantity_sold) AS average_quantity_sold 
+            FROM Sales s 
+            JOIN Products p ON s.product_id = p.product_id 
+            WHERE p.unit_price > 100; 
 
-SELECT  
-    FORMAT(sale_date, 'yyyy-MM') AS sale_month,  
-    COUNT(*) AS number_of_sales  
+65.Retrieve the product name and total sales revenue for each product. 
 
-FROM sales 
+            SELECT p.product_name, SUM(s.total_price) AS total_revenue 
+            FROM Sales s 
+            JOIN Products p ON s.product_id = p.product_id 
+            GROUP BY p.product_name; 
 
-GROUP BY sale_month; 
+66.List all sales along with the corresponding product names. 
 
- 
+            SELECT s.sale_id, p.product_name 
+            FROM Sales s 
+            JOIN Products p ON s.product_id = p.product_id; 
 
- 
+67.Categorize sales as "High", "Medium", or "Low" based on total price (e.g., > $200 is High, $100-$200 is Medium, < $100 is Low). 
 
- 
+            SELECT sale_id,  
+                  CASE  
+                      WHEN total_price > 200 THEN 'High' 
+                       WHEN total_price BETWEEN 100 AND 200 THEN 'Medium' 
+                       ELSE 'Low' 
+                   END AS sales_category 
+            FROM Sales; 
 
- 
+ 68.Identify sales where the quantity sold is greater than the average quantity sold.  
 
-Retrieve the product details (name, category, unit price) for products that have a quantity sold greater than the average quantity sold across all products. 
+            SELECT * 
+            FROM Sales 
+            WHERE quantity_sold > (SELECT AVG(quantity_sold) FROM Sales); 
 
  
 
-SELECT product_name, category, unit_price 
-FROM Products 
-WHERE product_id IN ( 
-    SELECT product_id 
-    FROM Sales 
-    GROUP BY product_id 
-    HAVING SUM(quantity_sold) > (SELECT AVG(quantity_sold) FROM Sales) 
-); 
-
  
 
- 
+69.Extract the month and year from the sale date and count the number of sales for each month. 
 
- 
+            SELECT  
+                FORMAT(sale_date, 'yyyy-MM') AS sale_month,  
+                COUNT(*) AS number_of_sales  
+            FROM sales 
+            GROUP BY sale_month; 
 
- 
+70.Retrieve the product details (name, category, unit price) for products that have a quantity sold greater than the average quantity sold across all products. 
 
-What is the difference between DELETE and TRUNCATE in SQL? 
+            SELECT product_name, category, unit_price 
+            FROM Products 
+            WHERE product_id IN ( 
+                SELECT product_id 
+                FROM Sales 
+                GROUP BY product_id 
+                HAVING SUM(quantity_sold) > (SELECT AVG(quantity_sold) FROM Sales) 
+            ); 
 
- 
+71.What is the difference between DELETE and TRUNCATE in SQL? 
 
 DELETE 
-
 Purpose: Used to delete specific rows or all rows from a table based on a WHERE condition. 
 
- 
-
 TRUNCATE 
-
 Purpose: Used to remove all rows from a table quickly. 
 
- 
 
- 
-
- 
-
- 
-
-What is the difference between UNION and UNION ALL? 
-
- 
+72.What is the difference between UNION and UNION ALL? 
 
 UNION 
-
 Purpose: Combines the result sets of two or more SELECT queries and removes duplicate rows. 
 
- 
-
 UNION ALL 
-
 Purpose: Combines the result sets of two or more SELECT queries without removing duplicates. 
 
  
-
- 
-
- 
-
- 
-
-What is the difference between the HAVING clause and the WHERE clause? 
-
- 
-
- 
+73.What is the difference between the HAVING clause and the WHERE clause? 
 
 WHERE Clause 
-
 Purpose: Filters rows before any grouping or aggregation is performed. 
-
 Applies To: Individual rows in the table. 
-
 Used With: Columns in the table, conditions, or expressions. 
-
 Cannot Use: Aggregate functions like SUM, COUNT, AVG, etc. 
 
- 
-
- 
-
 HAVING Clause 
-
 Purpose: Filters groups of data after aggregation is performed. 
-
 Applies To: Groups created by the GROUP BY clause. 
-
 Used With: Aggregate functions like SUM, COUNT, AVG, etc. 
-
 Requires: GROUP BY clause when grouping is involved. 
 
  
 
- 
-
- 
-
-What is a transaction in SQL? 
-
- 
-
+74.What is a transaction in SQL? 
 A transaction in SQL is a sequence of one or more SQL operations (such as INSERT, UPDATE, DELETE, etc.) that are executed as a single, logical unit of work. Transactions ensure that the database remains in a consistent state even in the event of system failures or other issues. 
 
 When to Use Transactions 
-
 Bank transfers or financial updates. 
-
 Order processing in e-commerce systems. 
-
 Data migrations or batch processing. 
-
 Any scenario where partial updates can cause data inconsistency. 
 
- 
 
- 
-
- 
-
-What is a deadlock? 
-
- 
-
+75.What is a deadlock?
 A deadlock in databases occurs when two or more transactions block each other indefinitely because they are waiting for resources locked by each other. In other words, each transaction is waiting for the other to release a resource, and none of them can proceed, causing a standstill. 
 
  
 
- 
-
-What is the difference between a database and a schema? 
-
+76.What is the difference between a database and a schema? 
 The difference between a database and a schema lies in their structure and purpose: 
 
 Database: 
-
 A database is a collection of data that is organized and stored for easy access, management, and updating. It includes the data itself, as well as the mechanisms (e.g., tables, views, stored procedures) to manage and query the data. 
-
 It is a physical entity, and databases can contain multiple schemas. 
-
 A database may include users, permissions, indexes, and other features for managing data. 
 
 Schema: 
-
 A schema is a logical container or structure within a database that organizes and defines how the data is stored. It consists of database objects such as tables, views, indexes, and relationships between the tables. 
-
 A schema is more about defining the organization and relationships within the data, rather than the actual data itself. 
-
 It is often used to group database objects into manageable sections or namespaces. Different schemas can be used to separate data based on different applications or use cases. 
 
- 
-
- 
-
- 
-
-What is the difference between a temporary table and a table variable? 
-
- 
+77.What is the difference between a temporary table and a table variable? 
 
 Scope and Lifetime: 
-
 Temporary Table: 
-
 Created using the # (for local) or ## (for global) prefix (e.g., #tempTable). 
-
 The scope of a local temporary table is limited to the session or connection that created it. Once the session ends, the table is automatically dropped. 
-
 A global temporary table is available to all sessions and is dropped when all sessions referencing it are closed. 
 
  
-
- 
-
- 
-
 Table Variable: 
-
 Created using the DECLARE statement (e.g., DECLARE @tempTable TABLE (...)). 
-
 The scope of a table variable is limited to the batch or stored procedure in which it is declared. Once the batch or procedure finishes, the table variable is automatically dropped. 
 
 Usage: 
-
 Temporary Table: 
-
 Useful when you need to store and manipulate a large set of data, especially for complex queries or when the data needs to be accessed in multiple queries within a session. 
-
 Table Variable: 
-
 Ideal for smaller sets of data, temporary storage within stored procedures, or simple data manipulation that doesn't require the full functionality of a temporary table. 
 
- 
 
- 
-
- 
-
-What is the purpose of the GROUP BY clause? 
-
- 
-
+78.What is the purpose of the GROUP BY clause? 
 The GROUP BY clause in SQL is used to group rows that have the same values in specified columns into summary rows, like finding the total, average, or count for each group. It is often used with aggregate functions (such as COUNT(), SUM(), AVG(), MAX(), and MIN()) to perform calculations on each group. 
 
- 
 
- 
-
-What is the difference between CHAR and VARCHAR data types? 
+79.What is the difference between CHAR and VARCHAR data types? 
 
 Storage Behavior: 
 
 CHAR (Fixed-Length): 
 
 CHAR is used to store fixed-length strings. If the string value is shorter than the specified length, it will be padded with spaces to reach the defined length. 
-
 For example, if you define a CHAR(10) column and insert a string of length 5, it will automatically store it as 'Hello ' (with 5 trailing spaces). 
-
 Suitable for storing values that are consistently of the same length (e.g., fixed-length codes or IDs). 
 
 VARCHAR (Variable-Length): 
 
 VARCHAR is used to store variable-length strings. It only uses the amount of storage required for the actual string, plus a small overhead for storing the length of the string. 
-
 For example, if you define a VARCHAR(10) column and insert a string of length 5, it will store just 'Hello' without any padding. 
-
 Suitable for storing values where the length can vary (e.g., names, addresses). 
 
- 
 
- 
-
- 
-
- 
-
-What is a stored procedure? 
-
- 
+80.What is a stored procedure? 
 
 A stored procedure is a precompiled collection of one or more SQL statements that can be executed as a single unit. It is stored in the database and can be executed by calling its name, passing any required parameters. 
 
- 
-
 Once created, a stored procedure can be executed multiple times without needing to rewrite the SQL code. This promotes code reuse and reduces redundancy. 
 
- 
 
 CREATE PROCEDURE procedure_name  
-
 @parameter1 datatype,  
-
 @parameter2 datatype  
-
 AS  
-
 BEGIN 
-
      -- SQL statements go here  
-
    SELECT * FROM table_name WHERE column_name = @parameter1; 
-
      -- More SQL statements can be added here  
-
 END; 
 
- 
-
 Input Parameters (@parameter): These are used to pass values into the procedure. 
-
 Output Parameters (@parameter OUTPUT): These allow the procedure to send values back to the caller. 
 
  
-
- 
-
-What is a subquery? 
-
- 
+81.What is a subquery? 
 
 A subquery (also known as an inner query or nested query) is a query that is embedded inside another SQL query. It allows you to perform operations that require multiple steps, and it can be used in various parts of the main query, such as the SELECT, FROM, WHERE, or HAVING clauses. 
 
  
-
- 
-
- 
-
-What is a view? 
-
- 
+82.What is a view? 
 
 A view in SQL is a virtual table that represents the result of a stored query. It does not store data itself, but rather provides a way to query data from one or more tables in a specific format, with or without filtering, joining, or aggregating the data. A view simplifies complex queries and can be used to present a subset of the data or hide sensitive information from users. 
 
- 
-
-CREATE VIEW view_name AS  
-
-SELECT column1, column2, ...  
-
-FROM table_name  
-
-WHERE condition; 
-
- 
+            CREAE VIEW view_name AS  
+            SELECT column1, column2, ...  
+            FROM table_name  
+            WHERE condition; 
 
 Views can be used to restrict access to sensitive columns or rows in the underlying tables. You can create a view that shows only a subset of columns, making it easier to enforce security policies. 
 
- 
-
- 
-
-What is the difference between a cross join and an inner join? 
-
- 
+83.What is the difference between a cross join and an inner join? 
 
 CROSS JOIN 
-
 A CROSS JOIN produces the Cartesian product of two tables. It pairs every row from the first table with every row from the second table. 
 
  
 
 INNER JOIN 
-
 An INNER JOIN retrieves rows that have matching values in both tables based on a specified condition. 
 
  
 
-What is the purpose of the COMMIT statement? 
-
- 
+84.What is the purpose of the COMMIT statement? 
 
 The COMMIT statement in SQL is used to permanently save all the changes made during the current transaction to the database. It ensures that all modifications (such as INSERT, UPDATE, DELETE, etc.) are persisted and become visible to other users or processes. 
 
@@ -1535,47 +679,27 @@ The COMMIT statement in SQL is used to permanently save all the changes made dur
 
  
 
-What is the purpose of the ROLLBACK statement? 
-
- 
+85.What is the purpose of the ROLLBACK statement? 
 
 The ROLLBACK statement in SQL is used to undo all changes made during the current transaction. It reverts the database to the state it was in before the transaction began, discarding any modifications that have not been committed. 
-
 Prevents invalid or incomplete data from being saved to the database. 
 
- 
 
- 
-
-What is the purpose of the NULL value in SQL? 
-
- 
+86.What is the purpose of the NULL value in SQL? 
 
 The NULL value in SQL represents "unknown" or "missing data". It is a special marker used to indicate that a value is not available, applicable, or has not been assigned. Unlike zero or an empty string, NULL means the value is explicitly undefined or unknown. 
 
 Not Equal to Zero or an Empty String: 
-
 NULL is different from 0 (numeric zero) or '' (an empty string). These have specific meanings, while NULL means "unknown." 
 
- 
 
 To check for NULL values, use the IS NULL operator: 
+        SELECT *  
+        FROM users  
+        WHERE age IS NULL; 
 
-SELECT *  
 
-FROM users  
-
-WHERE age IS NULL; 
-
- 
-
- 
-
- 
-
-What is the purpose of the DISTINCT keyword? 
-
- 
+87.What is the purpose of the DISTINCT keyword? 
 
 The DISTINCT keyword in SQL is used to remove duplicate rows from the result set of a query. It ensures that the returned data contains only unique values for the specified columns. 
 
@@ -1583,185 +707,145 @@ The DISTINCT keyword in SQL is used to remove duplicate rows from the result set
 
  
 
-What is the difference between the IN and EXISTS operators? 
+88.What is the difference between the IN and EXISTS operators? 
 
 IN Operator 
 
 Purpose: 
-
-Used to check if a value matches any value in a specified list or the result of a subquery. 
+    Used to check if a value matches any value in a specified list or the result of a subquery. 
 
 Functionality: 
-
-Compares a single column against a list of values or the result of a subquery. 
+    Compares a single column against a list of values or the result of a subquery. 
 
 Execution: 
-
-The subquery result is fetched first, and then the outer query compares the values. 
+    The subquery result is fetched first, and then the outer query compares the values. 
 
 Behavior: 
+    If the list or subquery result contains NULL, it can impact the behavior (may not return expected results). 
 
-If the list or subquery result contains NULL, it can impact the behavior (may not return expected results). 
-
- 
 
 EXISTS Operator 
 
 Purpose: 
-
-Used to test whether a subquery returns any rows. 
+    Used to test whether a subquery returns any rows. 
 
 Functionality: 
-
-Returns TRUE if the subquery returns at least one row, otherwise FALSE. 
+    Returns TRUE if the subquery returns at least one row, otherwise FALSE. 
 
 Execution: 
-
-Stops execution as soon as a matching row is found, making it efficient for large datasets. 
+    Stops execution as soon as a matching row is found, making it efficient for large datasets. 
 
 Behavior: 
+    Does not depend on the actual values in the subquery; it only checks for the existence of rows. 
 
-Does not depend on the actual values in the subquery; it only checks for the existence of rows. 
 
-When to Use: 
+When to Use:
 
 Use IN: 
-
-When working with small lists or subqueries. 
-
-When comparing a column to a static list (e.g., IN ('A', 'B', 'C')). 
+    When working with small lists or subqueries. 
+    When comparing a column to a static list (e.g., IN ('A', 'B', 'C')). 
 
 Use EXISTS: 
+    When testing for the existence of related data. 
+    When dealing with large datasets or correlated subqueries. 
 
-When testing for the existence of related data. 
 
-When dealing with large datasets or correlated subqueries. 
 
- 
 
- 
-
-What is the purpose of the TRIGGER statement? 
-
- 
-
+89.What is the purpose of the TRIGGER statement? 
 The TRIGGER statement in SQL is used to define a set of automated actions that execute in response to specific events (e.g., INSERT, UPDATE, or DELETE) on a table or a view. A trigger is essentially a mechanism to enforce business rules, maintain data integrity, or automate tasks in the database. 
 
 Key Characteristics of a Trigger: 
 
 Event-Driven: 
-
-Triggers are activated by events (e.g., INSERT, UPDATE, DELETE). 
+    Triggers are activated by events (e.g., INSERT, UPDATE, DELETE). 
 
 Defined at Table or View Level: 
-
-Triggers are created for a specific table or view and are invoked automatically when specified events occur. 
+    Triggers are created for a specific table or view and are invoked automatically when specified events occur. 
 
 Automated Execution: 
-
-Once defined, a trigger executes without explicit calls, ensuring consistency. 
+    Once defined, a trigger executes without explicit calls, ensuring consistency. 
 
 Read-Only Execution Context: 
+    Triggers cannot directly return a result set to the calling application. 
 
-Triggers cannot directly return a result set to the calling application. 
 
- 
+90.What is the difference between a unique constraint and a unique index? 
 
- 
-
-What is the difference between a unique constraint and a unique index? 
 
 Unique Constraint 
 
 Purpose: 
 
-A unique constraint ensures that the values in one or more columns are unique across all rows in a table. 
+    A unique constraint ensures that the values in one or more columns are unique across all rows in a table. 
+
+
 
 Unique Index 
 
 Purpose: 
 
-A unique index is a physical structure used to optimize query performance while also enforcing uniqueness. 
+    A unique index is a physical structure used to optimize query performance while also enforcing uniqueness. 
 
 Definition: 
 
-It is primarily a performance feature, creating a data structure that allows fast lookups while ensuring unique values. 
+    It is primarily a performance feature, creating a data structure that allows fast lookups while ensuring unique values. 
+
+
 
  
-
- 
-
-What is the purpose of the TOP or LIMIT clause? 
+91.What is the purpose of the TOP or LIMIT clause? 
 
 Purpose: 
 
 Fetch a Specific Number of Rows: 
-
-Retrieve a limited number of rows from a table. 
-
-Example: Get the first 5 rows of a table. 
+    Retrieve a limited number of rows from a table. 
+    Example: Get the first 5 rows of a table. 
 
 Pagination: 
-
-Retrieve a subset of rows for pagination in applications, such as displaying 10 records per page in a web application. 
+    Retrieve a subset of rows for pagination in applications, such as displaying 10 records per page in a web application. 
 
 Performance Optimization: 
-
-Limit the amount of data retrieved to improve query performance and reduce resource usage. 
+    Limit the amount of data retrieved to improve query performance and reduce resource usage. 
 
 SQL SERVER 
+            SELECT TOP 5 * 
+            FROM employees; 
 
-SELECT TOP 5 * 
-
- FROM employees; 
-
- 
 
 Alternative in SQL Server for Pagination: 
 
-SELECT *  
+            SELECT *  
+            FROM employees  
+            ORDER BY employee_id  
+            OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY; 
 
-FROM employees  
-
-ORDER BY employee_id  
-
-OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY; 
-
- 
 
 (MySQL, PostgreSQL, SQLite): 
 
-SELECT * FROM employees LIMIT 5 OFFSET 10; 
-
- Retrieves 5 rows starting from the 11th row (used for pagination). 
-
- 
+            SELECT * FROM employees LIMIT 5 OFFSET 10; 
+            Retrieves 5 rows starting from the 11th row (used for pagination). 
 
  
 
-What is the difference between the UNION and JOIN operators? 
-
  
+92.What is the difference between the UNION and JOIN operators? 
 
 1. UNION Operator 
 
 Purpose: 
 
-Combines the result sets of two or more SELECT queries into a single result set, removing duplicates (unless ALL is used). 
+    Combines the result sets of two or more SELECT queries into a single result set, removing duplicates (unless ALL is used). 
 
 How It Works: 
-
-The UNION operator combines rows from multiple queries vertically (row-wise). It stacks the result sets of each query. 
-
-All SELECT queries must return the same number of columns, and the corresponding columns must have compatible data types. 
+    The UNION operator combines rows from multiple queries vertically (row-wise). It stacks the result sets of each query. 
+    All SELECT queries must return the same number of columns, and the corresponding columns must have compatible data types. 
 
 Key Points: 
 
-Combines result sets vertically. 
-
-Eliminates duplicate rows by default (use UNION ALL to include duplicates). 
-
-Requires that all SELECT queries have the same number of columns and compatible data types. 
+    Combines result sets vertically. 
+    Eliminates duplicate rows by default (use UNION ALL to include duplicates). 
+    Requires that all SELECT queries have the same number of columns and compatible data types. 
 
  
 
@@ -1769,61 +853,46 @@ Requires that all SELECT queries have the same number of columns and compatible 
 
 Purpose: 
 
-Combines rows from two or more tables horizontally based on a related column between them (typically a foreign key and primary key relationship). 
+    Combines rows from two or more tables horizontally based on a related column between them (typically a foreign key and primary key relationship). 
 
 How It Works: 
 
-JOIN allows you to merge data from multiple tables into a single result set by aligning rows where a common column exists. The most common type of join is the INNER JOIN, but there are others like LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN, which define how unmatched rows are treated. 
+    1.JOIN allows you to merge data from multiple tables into a single result set by aligning rows where a common column exists. The most common type of join is the INNER JOIN, but there      are others like LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN, which define how unmatched rows are treated. 
 
 Key Points: 
 
-Combines result sets horizontally. 
-
-Matches rows based on common columns or conditions. 
-
-There are several types of joins (INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN), which determine how unmatched rows are handled. 
+        1.Combines result sets horizontally. 
+        2.Matches rows based on common columns or conditions. 
+        3.There are several types of joins (INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN), which determine how unmatched rows are handled. 
 
  
-
- 
-
- 
-
- 
-
-What is the purpose of the CASE statement? 
+93.What is the purpose of the CASE statement? 
 
 Purpose of the CASE Statement: 
 
-Conditional Logic: 
+1.Conditional Logic: 
+    The CASE statement helps implement conditional logic by evaluating one or more conditions and returning different values depending on which condition is true. 
 
-The CASE statement helps implement conditional logic by evaluating one or more conditions and returning different values depending on which condition is true. 
+2.Data Transformation: 
+    It can be used to transform data values based on certain conditions, like changing the status of an employee based on their age, salary range, etc. 
 
-Data Transformation: 
+3.Simplifying Queries: 
+    It can simplify complex queries by incorporating decision-making directly within the query, avoiding the need for separate post-query logic. 
 
-It can be used to transform data values based on certain conditions, like changing the status of an employee based on their age, salary range, etc. 
-
-Simplifying Queries: 
-
-It can simplify complex queries by incorporating decision-making directly within the query, avoiding the need for separate post-query logic. 
-
-Conditional Aggregation: 
-
-The CASE statement can be used in aggregate functions like SUM(), COUNT(), AVG() to apply conditional logic on the data before performing the aggregation. 
+4.Conditional Aggregation: 
+    The CASE statement can be used in aggregate functions like SUM(), COUNT(), AVG() to apply conditional logic on the data before performing the aggregation. 
 
  
 
- 
-
-What is the purpose of the ROW_NUMBER() function? 
+94.What is the purpose of the ROW_NUMBER() function? 
 
 Purpose of the ROW_NUMBER() Function: 
 
-Assign Unique Row Numbers: It assigns a unique number to each row in a result set, which is useful for tasks such as pagination, ranking, or assigning an identifier to rows. 
+1.Assign Unique Row Numbers: It assigns a unique number to each row in a result set, which is useful for tasks such as pagination, ranking, or assigning an identifier to rows. 
 
-Row Numbering with Partitioning: You can use ROW_NUMBER() with the PARTITION BY clause to restart the numbering for different groups or partitions of data. 
+2.Row Numbering with Partitioning: You can use ROW_NUMBER() with the PARTITION BY clause to restart the numbering for different groups or partitions of data. 
 
-Sorting Data: You can specify an ORDER BY clause within the ROW_NUMBER() function to control the order in which the row numbers are assigned. 
+3.Sorting Data: You can specify an ORDER BY clause within the ROW_NUMBER() function to control the order in which the row numbers are assigned. 
 
  
 
