@@ -705,8 +705,6 @@ The DISTINCT keyword in SQL is used to remove duplicate rows from the result set
 
  
 
- 
-
 88.What is the difference between the IN and EXISTS operators? 
 
 IN Operator 
@@ -768,6 +766,7 @@ Automated Execution:
 
 Read-Only Execution Context: 
     Triggers cannot directly return a result set to the calling application. 
+
 
 
 90.What is the difference between a unique constraint and a unique index? 
@@ -898,7 +897,7 @@ Purpose of the ROW_NUMBER() Function:
 
  
 
-What is the difference between the EXISTS and NOT EXISTS operators? 
+95.What is the difference between the EXISTS and NOT EXISTS operators? 
 
 EXISTS: 
 
@@ -916,9 +915,8 @@ NOT EXISTS is used when you want to exclude rows based on the non-existence of a
 
  
 
- 
 
-What is a self-join? 
+96.What is a self-join? 
 
 A self-join is a type of join where a table is joined with itself. This is useful when you need to compare rows within the same table based on certain conditions, or when working with hierarchical data structures (such as employee-manager relationships, categories and subcategories, etc.). 
 
@@ -928,101 +926,86 @@ In a self-join, you treat the table as if it were two different tables by using 
 
 Use Cases of a Self-Join: 
 
-Hierarchical Data: 
+1.Hierarchical Data: 
+            Self-joins are commonly used to manage hierarchical data, such as parent-child relationships (e.g., employee-manager, categories-subcategories). 
 
-Self-joins are commonly used to manage hierarchical data, such as parent-child relationships (e.g., employee-manager, categories-subcategories). 
+2.Comparing Rows within the Same Table: 
+            You can use a self-join to compare rows in the same table, such as finding rows with similar values or specific relationships. 
 
-Comparing Rows within the Same Table: 
-
-You can use a self-join to compare rows in the same table, such as finding rows with similar values or specific relationships. 
-
-Identifying Duplicate Data: 
-
-A self-join can also help in finding duplicate rows or comparing rows for data cleaning purposes. 
+3.Identifying Duplicate Data: 
+            A self-join can also help in finding duplicate rows or comparing rows for data cleaning purposes. 
 
  
 
- 
 
-What is an ALIAS command? 
+
+
+97.What is an ALIAS command? 
 
 An ALIAS in SQL is a temporary name given to a table or column in a query. It is used to simplify the query, making it more readable and easier to reference. Aliases are often used in SELECT statements, JOIN operations, and when working with subqueries. They do not change the actual names of the columns or tables in the database; they are just temporary names for the duration of the query. 
 
 Purpose of Aliases: 
 
-Simplify Complex Queries: When you are working with long table names or column names, aliases help shorten them for easier reference. 
+            1.Simplify Complex Queries: When you are working with long table names or column names, aliases help shorten them for easier reference. 
+            2.Improve Readability: Aliases can make queries more understandable, especially when you join multiple tables or use subqueries. 
+            3.Work with Expressions: You can assign aliases to expressions or computed columns to make the results easier to interpret. 
 
-Improve Readability: Aliases can make queries more understandable, especially when you join multiple tables or use subqueries. 
 
-Work with Expressions: You can assign aliases to expressions or computed columns to make the results easier to interpret. 
-
- 
 
  
+98.Why are SQL functions used? 
 
-Why are SQL functions used? 
-
- 
-
- 
 
 SQL functions are used to perform operations on data stored in a database. They are built-in operations that help manipulate, aggregate, or transform data to meet the needs of queries. SQL functions can simplify complex tasks, provide calculations, and facilitate data analysis directly within a query. They help make SQL queries more efficient, concise, and powerful. 
 
 Why SQL Functions Are Used: 
 
-Data Transformation and Manipulation: 
+1.Data Transformation and Manipulation: 
 
 SQL functions allow you to transform data in real-time. You can modify the format, perform mathematical calculations, or concatenate data values within the query itself. 
 
  
 
 SELECT UPPER(employee_name) AS uppercase_name  
-
 FROM employees; 
 
 Types of SQL Functions: 
 
-Aggregate Functions: 
+1.Aggregate Functions: 
 
-COUNT(), SUM(), AVG(), MIN(), MAX() 
+a.COUNT(), SUM(), AVG(), MIN(), MAX() 
+b.Used to perform calculations on a set of rows. 
 
-Used to perform calculations on a set of rows. 
+2.String Functions: 
 
-String Functions: 
+a.CONCAT(), SUBSTRING(), LENGTH(), UPPER(), LOWER(), TRIM() 
+b.Used to manipulate text data. 
 
-CONCAT(), SUBSTRING(), LENGTH(), UPPER(), LOWER(), TRIM() 
+3.Mathematical Functions: 
 
-Used to manipulate text data. 
+a.ROUND(), ABS(), CEIL(), FLOOR(), MOD() 
+b.Used for performing mathematical operations on numeric data. 
 
-Mathematical Functions: 
+4.Date and Time Functions: 
 
-ROUND(), ABS(), CEIL(), FLOOR(), MOD() 
+a.NOW(), DATEADD(), DATEDIFF(), MONTH(), YEAR() 
+b.Used to work with date and time values. 
 
-Used for performing mathematical operations on numeric data. 
+5.Conditional Functions: 
 
-Date and Time Functions: 
+b.CASE, COALESCE(), NULLIF(), IFNULL(), ISNULL() 
+a.Used to handle conditions and NULL values. 
 
-NOW(), DATEADD(), DATEDIFF(), MONTH(), YEAR() 
+6.Window Functions: 
 
-Used to work with date and time values. 
-
-Conditional Functions: 
-
-CASE, COALESCE(), NULLIF(), IFNULL(), ISNULL() 
-
-Used to handle conditions and NULL values. 
-
-Window Functions: 
-
-ROW_NUMBER(), RANK(), DENSE_RANK(), LEAD(), LAG() 
-
-Used for performing operations on a set of rows related to the current row in the result set. 
+a.bROW_NUMBER(), RANK(), DENSE_RANK(), LEAD(), LAG() 
+b.Used for performing operations on a set of rows related to the current row in the result set. 
 
  
 
  
 
-What is SQL? 
+99.What is SQL? 
 
  
 
@@ -1032,25 +1015,21 @@ It stands for Structured Query Language, and it's a programming language used fo
 
  
 
-99.5 What is a database? 
+100.What is a database? 
 
 A structured storage space where the data is kept in many tables and organized so that the necessary information can be easily fetched, manipulated, and summarized. 
 
  
 
- 
+101.What is a primary key? 
 
-What is a primary key? 
-
- 
 
 A column (or multiple columns) of a table to which the PRIMARY KEY constraint was imposed to ensure unique and non-null values in that column. In other words, a primary key is a combination of the NOT NULL and UNIQUE constraints. The primary key uniquely identifies each record of the table. Each table should contain a primary key and can't contain more than one primary key. 
 
  
 
  
-
-What is a foreign key? 
+102.What is a foreign key? 
 
 A foreign key is a field (or a collection of fields) in one table that refers to the primary key in another table. It is used to establish and enforce a link between the data in the two tables. The foreign key ensures referential integrity by making sure that the value in the foreign key field matches a valid value in the referenced table’s primary key. 
 
@@ -1058,29 +1037,21 @@ A foreign key is a field (or a collection of fields) in one table that refers to
 
  
 
-What is the difference between a primary key and a unique key? 
+103.What is the difference between a primary key and a unique key? 
 
  
-
 Purpose: 
-
 Primary Key: 
+            1.A primary key uniquely identifies each record in a table. 
+            2.It ensures that each row in the table is unique and cannot have duplicate values for the column(s) it is applied to. 
+            3.A table can only have one primary key, which can consist of one or more columns (composite key). 
 
-A primary key uniquely identifies each record in a table. 
-
-It ensures that each row in the table is unique and cannot have duplicate values for the column(s) it is applied to. 
-
-A table can only have one primary key, which can consist of one or more columns (composite key). 
-
- 
 
 Unique Key: 
 
-A unique key also ensures that the values in the column(s) are unique across the table, meaning no two rows can have the same value in the unique key column(s). 
-
-Unlike the primary key, a table can have multiple unique keys. 
-
-It allows NULL values (depending on the DBMS), which are not allowed in primary key columns. 
+            1.A unique key also ensures that the values in the column(s) are unique across the table, meaning no two rows can have the same value in the unique key column(s). 
+            2.Unlike the primary key, a table can have multiple unique keys. 
+            3.It allows NULL values (depending on the DBMS), which are not allowed in primary key columns. 
 
  
 
@@ -1088,33 +1059,36 @@ It allows NULL values (depending on the DBMS), which are not allowed in primary 
 
  
 
-What is a join in SQL? 
+104.What is a join in SQL? 
 
  
 
 A JOIN in SQL is used to combine rows from two or more tables based on a related column between them. It allows you to retrieve data from multiple tables in a single query by linking them together through common columns. 
 
- 
+
 
 INNER JOIN: 
 
 Retrieves only the rows that have matching values in both tables. 
 
- 
+
 
 LEFT JOIN (or LEFT OUTER JOIN): 
 
 Retrieves all rows from the left table and the matching rows from the right table. If there is no match, the result will still include rows from the left table, but with NULL values for the columns of the right table. 
 
- 
+
 
 RIGHT JOIN (or RIGHT OUTER JOIN): 
 
 Retrieves all rows from the right table and the matching rows from the left table. If there is no match, the result will still include rows from the right table, but with NULL values for the columns of the left table. 
 
+
 FULL JOIN (or FULL OUTER JOIN): 
 
 Retrieves all rows when there is a match in either the left table or the right table. If there is no match, it includes NULL for the columns of the table without a match. 
+
+
 
 CROSS JOIN: 
 
@@ -1126,77 +1100,47 @@ It does not require a condition to match rows.
 
  
 
-What is normalization? 
-
- 
+105.What is normalization? 
 
 Normalization is a process of database design that includes organizing and restructuring data in a way to reduce data redundancy, dependency, duplication, and inconsistency. This leads to enhanced data integrity, more tables within the database, more efficient data access and security control, and greater query flexibility. 
 
  
-
  
 
- 
+106.What is the difference between a clustered and a non-clustered index? 
 
  
-
-What is the difference between a clustered and a non-clustered index? 
-
- 
-
 Definition and Structure: 
 
- 
+            Clustered Index: 
 
-Clustered Index: 
-
-A clustered index determines the physical order of the data in the table. The data rows are stored in the same order as the clustered index. 
-
-When you create a clustered index on a table, the table's data is rearranged to match the index order. 
-
-A table can have only one clustered index because the data rows can be sorted in only one order. 
-
-The clustered index is typically created on the primary key column by default, but it can also be created on any other column. 
+            A clustered index determines the physical order of the data in the table. The data rows are stored in the same order as the clustered index. 
+            When you create a clustered index on a table, the table's data is rearranged to match the index order. 
+            A table can have only one clustered index because the data rows can be sorted in only one order. 
+            The clustered index is typically created on the primary key column by default, but it can also be created on any other column. 
 
  
-
-Non-Clustered Index: 
-
-A non-clustered index is a separate structure from the actual data table. It stores a copy of the indexed column(s) along with a pointer to the actual data rows. 
-
-Non-clustered indexes do not affect the physical storage order of the data in the table; instead, they provide an alternate way to look up data. 
-
-A table can have multiple non-clustered indexes. 
-
-Non-clustered indexes are often used to speed up queries on columns that are frequently searched or used in JOIN, WHERE, or ORDER BY clauses. 
+            Non-Clustered Index: 
+            
+            A non-clustered index is a separate structure from the actual data table. It stores a copy of the indexed column(s) along with a pointer to the actual data rows. 
+            Non-clustered indexes do not affect the physical storage order of the data in the table; instead, they provide an alternate way to look up data. 
+            A table can have multiple non-clustered indexes. 
+            Non-clustered indexes are often used to speed up queries on columns that are frequently searched or used in JOIN, WHERE, or ORDER BY clauses. 
 
  
-
  
 
- 
+107.What is the difference between a left join and a right join? 
 
  
-
- 
-
-What is the difference between a left join and a right join? 
-
- 
-
 LEFT JOIN keeps all rows from the left table and adds matching rows from the right table, filling with NULL when no match is found in the right table. 
 
 RIGHT JOIN keeps all rows from the right table and adds matching rows from the left table, filling with NULL when no match is found in the left table. 
 
- 
 
- 
 
- 
 
-What is the difference between a left join and a full outer join? 
-
- 
+108.What is the difference between a left join and a full outer join? 
 
 A LEFT JOIN includes all rows from the left table and matching rows from the right table, filling in NULL when no match is found in the right table. 
 
@@ -1204,23 +1148,31 @@ A FULL OUTER JOIN includes all rows from both tables, filling in NULL for any un
 
  
 
- 
 
- 
 
-What is the difference between a right join and an inner join? 
+109.What is the difference between a right join and an inner join? 
 
- 
 
 A RIGHT JOIN includes all rows from the right table and only matching rows from the left table, filling in NULL for missing values from the left table. 
 
 An INNER JOIN only includes rows where there is a match between both tables, excluding rows with no matching data in either table. 
 
- 
 
- 
 
- 
 
-What is the difference between a primary key and a foreign key? 
+110.What is the difference between a primary key and a foreign key? 
 
+            Primary Key: 
+            
+            1.A primary key is a unique identifier for each record in a database table. 
+            2.It ensures that each row in the table has a unique and non-null value for the primary key column(s). 
+            3.A table can only have one primary key, and it can consist of one or more columns (composite key). 
+            4.The primary key column(s) must not contain NULL values, ensuring that every record can be uniquely identified. 
+            
+            
+            Foreign Key: 
+            
+            1.A foreign key is a column (or set of columns) in one table that refers to the primary key or a unique key in another table. 
+            2.It is used to establish and enforce a link between the data in two tables. 
+            3.The foreign key column(s) can contain duplicate values and can also contain NULL values, depending on the relationship. 
+            4.The foreign key ensures referential integrity by making sure that the values in the foreign key column exist in the referenced primary key column of the other table. 
