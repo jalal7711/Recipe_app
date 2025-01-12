@@ -430,7 +430,7 @@
 
 59.Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'. 
 
-            SELECT sale_id, DATE_FORMAT(sale_date, '%Y-%m-%d') AS 
+            SELECT sale_id, FORMAT(sale_date, 'yyyy-MM-dd') AS 
             formatted_date  
             FROM Sales; 
 
@@ -463,10 +463,11 @@
 
 64.Determine the average quantity sold for products with a unit price greater than $100. 
 
-            SELECT AVG(s.quantity_sold) AS average_quantity_sold 
-            FROM Sales s 
-            JOIN Products p ON s.product_id = p.product_id 
-            WHERE p.unit_price > 100; 
+            select product_name,avg(s.quantity_sold) as AverageQuantitySold
+            from sales s
+            join products p on p.product_id=s.product_id
+            where unit_price>100
+            group by product_name;
 
 65.Retrieve the product name and total sales revenue for each product. 
 
