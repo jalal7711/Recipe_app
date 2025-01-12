@@ -484,13 +484,15 @@
 
 67.Categorize sales as "High", "Medium", or "Low" based on total price (e.g., > $200 is High, $100-$200 is Medium, < $100 is Low). 
 
-            SELECT sale_id,  
-                  CASE  
-                      WHEN total_price > 200 THEN 'High' 
-                       WHEN total_price BETWEEN 100 AND 200 THEN 'Medium' 
-                       ELSE 'Low' 
-                   END AS sales_category 
-            FROM Sales; 
+            select Product_name as ProductName,
+                        case 
+                                    when Total_price >200 then 'High'
+                                    when Total_price between 100 and 200 then 'Medium'
+                                    else  'Low'
+                        end as PriceCategory
+            from sales s
+            join products p on s.product_id=p.product_id;
+
 
  68.Identify sales where the quantity sold is greater than the average quantity sold.  
 
